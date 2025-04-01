@@ -72,8 +72,10 @@ for sheet in outPutWorkbook.sheetnames:
 
 # adds filters to each sheet 
 for sheet in outPutWorkbook.sheetnames: 
+    # recalculates the last row to ensure it is correct 
+    last_row = outPutWorkbook[sheet].max_row 
     outPutWorkbook[sheet].auto_filter.ref = f"A1:D{last_row}"
-
+    
 # Saves the workbook
 outPutWorkbook.save(filename = "formatted_grades.xlsx")
 
